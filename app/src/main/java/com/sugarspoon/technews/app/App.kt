@@ -1,4 +1,4 @@
-package com.sugarspoon.technews
+package com.sugarspoon.technews.app
 
 import android.app.Application
 import com.androidnetworking.AndroidNetworking

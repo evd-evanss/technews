@@ -1,4 +1,4 @@
-package com.sugarspoon.technews.extensions
+package com.sugarspoon.technews.utils.extensions
 
 import android.text.Editable
 import android.text.TextWatcher

@@ -1,4 +1,4 @@
-package com.sugarspoon.technews.extensions
+package com.sugarspoon.technews.utils.extensions
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO

@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.sugarspoon.technews.R
-import com.sugarspoon.technews.extensions.collectFrom
-import com.sugarspoon.technews.extensions.setVisible
+import com.sugarspoon.technews.utils.extensions.collectFrom
+import com.sugarspoon.technews.utils.extensions.setVisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_fragment.*
 

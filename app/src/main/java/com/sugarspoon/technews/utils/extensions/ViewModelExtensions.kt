@@ -1,4 +1,4 @@
-package com.sugarspoon.technews.extensions
+package com.sugarspoon.technews.utils.extensions
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

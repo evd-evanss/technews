@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sugarspoon.technews.data.remote.model.Article
 import com.sugarspoon.technews.data.repository.NewsRepositoryInterface
-import com.sugarspoon.technews.extensions.onCollect
+import com.sugarspoon.technews.utils.extensions.onCollect
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
