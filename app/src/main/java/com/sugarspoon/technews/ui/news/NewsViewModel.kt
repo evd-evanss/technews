@@ -4,7 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sugarspoon.technews.data.remote.model.Article
-import com.sugarspoon.technews.data.repository.NewsRepositoryInterface
+import com.sugarspoon.technews.data.remote.repository.NewsRepositoryInterface
 import com.sugarspoon.technews.utils.extensions.onCollect
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -15,7 +15,8 @@ class NewsViewModel @ViewModelInject constructor(
 
     val state = StateNewsActivity(
         articles = MutableStateFlow(mutableListOf()),
-        loading = MutableStateFlow(false)
+        loading = MutableStateFlow(false),
+        error = MutableStateFlow("")
     )
 
     fun getNews() = viewModelScope.launch {
@@ -28,14 +29,19 @@ class NewsViewModel @ViewModelInject constructor(
                     articles.value = it.articles
                 },
                 onError = {
-                    //todo errors treatment
+                    error.value = it.message ?: UNKNOWN_ERROR
                 }
             )
         }
+    }
+
+    companion object {
+        private const val UNKNOWN_ERROR = "Erro desconhecido"
     }
 }
 
 data class StateNewsActivity(
     val articles: MutableStateFlow<List<Article>>,
-    val loading: MutableStateFlow<Boolean>
+    val loading: MutableStateFlow<Boolean>,
+    val error: MutableStateFlow<String>
 )

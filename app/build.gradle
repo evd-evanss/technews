@@ -92,4 +92,6 @@ dependencies {
 
     //Flow Call Adapter
     implementation 'com.github.MohammadSianaki:Retrofit2-Flow-Call-Adapter:0.2.0'
+
+    debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
 }

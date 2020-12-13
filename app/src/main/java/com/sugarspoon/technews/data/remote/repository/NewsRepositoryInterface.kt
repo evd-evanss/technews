@@ -1,4 +1,4 @@
-package com.sugarspoon.technews.data.repository
+package com.sugarspoon.technews.data.remote.repository
 
 import com.sugarspoon.technews.data.remote.model.NewsResponse
 import kotlinx.coroutines.flow.Flow
