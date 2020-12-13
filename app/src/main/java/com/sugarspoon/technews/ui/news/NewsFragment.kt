@@ -18,7 +18,6 @@ class NewsFragment : Fragment(R.layout.main_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupCollectors()
-        viewModel.getNews()
     }
 
     private fun setupCollectors() {
@@ -29,11 +28,13 @@ class NewsFragment : Fragment(R.layout.main_fragment) {
     private fun collectArticles() = view?.run {
         with(viewModel) {
             collectFrom(
-                flow = state.articles,
+                flow = state.articles ?: return@run,
                 result = {
-                    with(recyclerArticles) {
-                        setHasFixedSize(true)
-                        adapter = NewsAdapter(it)
+                    recyclerArticles?.run {
+                        with(this) {
+                            setHasFixedSize(true)
+                            adapter = NewsAdapter(it)
+                        }
                     }
                 }
             )
@@ -43,7 +44,7 @@ class NewsFragment : Fragment(R.layout.main_fragment) {
     private fun collectLoading() = view?.run {
         with(viewModel) {
             collectFrom(
-                flow = state.loading,
+                flow = state.loading ?: return@run,
                 result = { loadingArticles.setVisible(it) }
             )
         }

@@ -9,9 +9,11 @@ import kotlinx.coroutines.launch
 fun <T> ViewModel.collectFrom(flow: Flow<T>, result: (T) -> Unit) {
     with(viewModelScope) {
         launch {
-            flow.collect {
-                result(it)
-            }
+            flow.onCollect(
+                onSuccess = {
+                    result(it)
+                }
+            )
         }
     }
 }
