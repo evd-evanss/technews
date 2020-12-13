@@ -5,15 +5,15 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.sugarspoon.technews.R
+import com.sugarspoon.technews.data.remote.datasource.NewsRepository
 import com.sugarspoon.technews.utils.extensions.collectFrom
 import com.sugarspoon.technews.utils.extensions.setVisible
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_fragment.*
 
-@AndroidEntryPoint
 class NewsFragment : Fragment(R.layout.main_fragment) {
 
-    private val viewModel: NewsViewModel by viewModels()
+    private val factory = NewsViewModel.Factory(NewsRepository())
+    private val viewModel by viewModels<NewsViewModel> { factory }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,9 +31,11 @@ class NewsFragment : Fragment(R.layout.main_fragment) {
             collectFrom(
                 flow = state.articles,
                 result = {
-                    with(recyclerArticles) {
-                        setHasFixedSize(true)
-                        adapter = NewsAdapter(it)
+                    recyclerArticles?.run {
+                        with(this) {
+                            setHasFixedSize(true)
+                            adapter = NewsAdapter(it)
+                        }
                     }
                 }
             )

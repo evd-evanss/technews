@@ -3,7 +3,6 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
 }
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
@@ -81,14 +80,6 @@ dependencies {
 
     // Others
     implementation "com.github.haroldadmin:NetworkResponseAdapter:4.0.1"
-
-    //Hilt
-    def hilt_lifecycle_version = '1.0.0-alpha02'
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_lifecycle_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_lifecycle_version"
-
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     //Flow Call Adapter
     implementation 'com.github.MohammadSianaki:Retrofit2-Flow-Call-Adapter:0.2.0'
