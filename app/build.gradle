@@ -76,6 +76,10 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
+    // Anko
+    def ankoVersion = '0.10.8'
+    implementation "org.jetbrains.anko:anko:$ankoVersion"
+
     // Fast Android networking
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
 

@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Technews">
+        <activity android:name=".ui.landingpage.WebViewActivity"></activity>
         <activity android:name=".ui.news.NewsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
