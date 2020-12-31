@@ -3,14 +3,14 @@ package com.sugarspoon.technews.ui.news
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sugarspoon.technews.data.remote.model.Article
-import com.sugarspoon.technews.data.remote.datasource.NewsDataSource
+import com.sugarspoon.domain.Article
 import com.sugarspoon.technews.utils.extensions.onCollect
+import com.sugarspoon.use_cases.UseCaseNews
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class NewsViewModel @ViewModelInject constructor(
-    private val newsRepository: NewsDataSource
+    private val useCaseNews: UseCaseNews
 ) : ViewModel() {
 
     val state = StateNewsActivity(
@@ -27,7 +27,7 @@ class NewsViewModel @ViewModelInject constructor(
 
     private fun getNews() = viewModelScope.launch {
         state.run {
-            newsRepository.getNews().onCollect(
+            useCaseNews.getNews().onCollect(
                 onLoading = {
                     loading?.value = it
                 },
