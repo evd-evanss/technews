@@ -1,9 +1,9 @@
 package com.sugarspoon.technews.ui.news
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.sugarspoon.technews.utils.NetworkErrorListener
 import com.sugarspoon.technews.R
-import com.sugarspoon.data.NetworkErrorListener
 import com.sugarspoon.technews.utils.extensions.onCollect
 import dagger.hilt.android.AndroidEntryPoint
 import org.jetbrains.anko.toast
@@ -18,12 +18,13 @@ class NewsActivity : AppCompatActivity() {
     }
 
     private fun startErrorListener(){
-        NetworkErrorListener.getEvents().onCollect(
-            onSuccess = {
-               if(it){
-                   toast("Erro 401")
-               }
-            }
-        )
+        val eventError = NetworkErrorListener.getEvents()
+        eventError.run {
+            code.onCollect(
+                onSuccess = { code ->
+                    code?.let { toast("code: $it") }
+                }
+            )
+        }
     }
 }

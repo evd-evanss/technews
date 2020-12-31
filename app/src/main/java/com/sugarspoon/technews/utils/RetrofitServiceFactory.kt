@@ -1,4 +1,4 @@
-package com.sugarspoon.data
+package com.sugarspoon.technews.utils
 
 import retrofit2.Retrofit
 

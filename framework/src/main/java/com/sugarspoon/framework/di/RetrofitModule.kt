@@ -1,10 +1,9 @@
-package com.sugarspoon.technews.di
+package com.sugarspoon.framework.di
 
 import android.content.Context
 import com.readystatesoftware.chuck.ChuckInterceptor
 import com.sugarspoon.data.NetworkConstants.API_KEY
 import com.sugarspoon.technews.BuildConfig
-import com.sugarspoon.technews.BuildConfig.BASE_URL
 import com.sugarspoon.data.ErrorInterceptor
 import dagger.Module
 import dagger.Provides

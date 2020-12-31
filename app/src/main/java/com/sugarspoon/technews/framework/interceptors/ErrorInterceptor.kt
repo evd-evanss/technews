@@ -1,5 +1,6 @@
-package com.sugarspoon.data
+package com.sugarspoon.technews.framework.interceptors
 
+import com.sugarspoon.technews.utils.NetworkErrorListener
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -13,14 +14,14 @@ class ErrorInterceptor: Interceptor {
     }
 
     private fun handleResponseCode(response: Response) {
-        if(response.code == UNAUTHORIZED_CODE) {
-            NetworkErrorListener.setEvent(error = true)
-        } else {
-            NetworkErrorListener.setEvent(error = false)
+        response.run {
+            if(code == UNAUTHORIZED_CODE) {
+                NetworkErrorListener.setEvent(response = response)
+            }
         }
     }
 
     companion object {
-        const val UNAUTHORIZED_CODE = 401
+        const val UNAUTHORIZED_CODE = 404
     }
 }

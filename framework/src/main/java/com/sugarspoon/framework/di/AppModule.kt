@@ -1,4 +1,4 @@
-package com.sugarspoon.technews.di
+package com.sugarspoon.framework.di
 
 import com.sugarspoon.data.NewsDataSource
 import com.sugarspoon.data.NewsDataSourceRepository

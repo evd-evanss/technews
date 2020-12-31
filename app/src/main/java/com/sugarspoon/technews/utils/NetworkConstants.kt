@@ -1,4 +1,4 @@
-package com.sugarspoon.data
+package com.sugarspoon.technews.utils
 
 object NetworkConstants {
     const val HEADLINES = "top-headlines?country=br"
