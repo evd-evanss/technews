@@ -1,4 +1,4 @@
-package com.sugarspoon.technews.data.remote.repository
+package com.sugarspoon.technews.utils.factory
 
 import com.sugarspoon.technews.BuildConfig.BASE_URL
 import me.sianaki.flowretrofitadapter.FlowCallAdapterFactory

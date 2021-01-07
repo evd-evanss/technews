@@ -3,7 +3,7 @@ package com.sugarspoon.technews.ui.news
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.sugarspoon.technews.data.remote.datasource.NewsRepository
+import com.sugarspoon.technews.data.remote.repository.NewsRepository
 import com.sugarspoon.technews.data.remote.model.Article
 import com.sugarspoon.technews.utils.extensions.onCollect
 import kotlinx.coroutines.flow.MutableStateFlow

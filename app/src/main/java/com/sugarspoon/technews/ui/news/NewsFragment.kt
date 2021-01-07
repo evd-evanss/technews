@@ -5,11 +5,13 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.sugarspoon.technews.R
-import com.sugarspoon.technews.data.remote.datasource.NewsRepository
+import com.sugarspoon.technews.data.remote.repository.NewsRepository
 import com.sugarspoon.technews.utils.extensions.collectFrom
 import com.sugarspoon.technews.utils.extensions.setVisible
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_fragment.*
 
+@AndroidEntryPoint
 class NewsFragment : Fragment(R.layout.main_fragment) {
 
     private val factory = NewsViewModel.Factory(NewsRepository())
