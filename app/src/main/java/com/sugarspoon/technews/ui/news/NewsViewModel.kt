@@ -3,33 +3,40 @@ package com.sugarspoon.technews.ui.news
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.sugarspoon.technews.base.BaseViewModel
 import com.sugarspoon.technews.data.remote.repository.NewsRepository
 import com.sugarspoon.technews.data.remote.model.Article
+import com.sugarspoon.technews.ui.news.routes.StateNewsRoutes
+import com.sugarspoon.technews.ui.news.states.StateNewsView
 import com.sugarspoon.technews.utils.extensions.onCollect
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class NewsViewModel (
     private val newsRepository: NewsRepository
-) : ViewModel() {
+) : BaseViewModel<StateNewsView, StateNewsRoutes>() {
 
-    val state = StateNewsActivity(
-        articles = MutableStateFlow(mutableListOf()),
-        loading = MutableStateFlow(false),
-        error = MutableStateFlow("")
-    )
+    override val initialViewState: StateNewsView
+        get() = StateNewsView()
+
+    override fun navigateByRoute(routes: StateNewsRoutes) {
+        routes.openWebView()
+    }
 
     fun getNews() = viewModelScope.launch {
         state.run {
             newsRepository.getNews().onCollect(
                 onLoading = {
-                    loading.value = it
+                    state.value = StateNewsView(loading = it)
                 },
                 onSuccess = {
-                    articles.value = it.articles
+                    state.value = StateNewsView(
+                        articles = it.articles,
+                        loading = false
+                    )
                 },
                 onError = {
-                    error.value = it.message ?: UNKNOWN_ERROR
+                    state.value = StateNewsView(error = it.message ?: UNKNOWN_ERROR)
                 }
             )
         }
@@ -51,8 +58,4 @@ class NewsViewModel (
     }
 }
 
-data class StateNewsActivity(
-    val articles: MutableStateFlow<List<Article>>,
-    val loading: MutableStateFlow<Boolean>,
-    val error: MutableStateFlow<String>
-)
+

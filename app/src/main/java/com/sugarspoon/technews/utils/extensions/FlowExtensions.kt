@@ -25,9 +25,6 @@ fun <T> Flow<T>.onCollect(
                 onSuccess?.let {
                     CoroutineScope(Main).launch {
                         it(result)
-                        onLoading?.let { loading ->
-                            loading(false)
-                        }
                     }
                 }
             }
@@ -39,6 +36,17 @@ fun <T> Flow<T>.onCollect(
                         loading(false)
                     }
                 }
+            }
+        }
+    }
+}
+
+fun <T> Flow<T>.safeCollect(
+    result: (suspend (t: T?) -> Unit)? = null) {
+    CoroutineScope(Main).launch {
+        collect {
+            result?.let { collector ->
+                collector(it)
             }
         }
     }

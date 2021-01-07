@@ -1,4 +1,4 @@
-package com.sugarspoon.technews.ui.news
+package com.sugarspoon.technews.ui.news.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +13,8 @@ class NewsAdapter(
     private val articles: List<Article>
 ) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
+    var onItemClicked: ((String) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_article, parent, false)
@@ -26,7 +28,7 @@ class NewsAdapter(
         holder.bind(articles[position])
     }
 
-    class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageArticle = itemView.imageArticle
         private val textArticleTitle = itemView.textArticleTitle
         private val textArticleDescription = itemView.textArticleDescription
@@ -42,6 +44,9 @@ class NewsAdapter(
                 .load(article.urlToImage)
                 .centerCrop()
                 .into(imageArticle)
+            itemView.setOnClickListener {
+                onItemClicked?.invoke(article.url)
+            }
         }
     }
 }

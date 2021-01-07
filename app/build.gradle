@@ -82,14 +82,13 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
-    // Fast Android networking
-    implementation 'com.amitshekhar.android:android-networking:1.0.2'
-
-    // Others
-    implementation "com.github.haroldadmin:NetworkResponseAdapter:4.0.1"
-
     //Flow Call Adapter
     implementation 'com.github.MohammadSianaki:Retrofit2-Flow-Call-Adapter:0.2.0'
 
+    //ChuckInterceptor
     debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
+
+    // Anko
+    def ankoVersion = '0.10.8'
+    implementation "org.jetbrains.anko:anko:$ankoVersion"
 }
