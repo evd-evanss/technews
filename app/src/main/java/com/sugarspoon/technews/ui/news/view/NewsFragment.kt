@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.sugarspoon.technews.R
-import com.sugarspoon.technews.data.remote.repository.NewsRepository
+import com.sugarspoon.technews.data.repository.NewsRepository
 import com.sugarspoon.technews.ui.news.NewsViewModel
 import com.sugarspoon.technews.utils.extensions.safeCollect
 import com.sugarspoon.technews.utils.extensions.setVisible

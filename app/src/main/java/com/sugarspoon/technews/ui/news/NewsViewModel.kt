@@ -4,12 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.sugarspoon.technews.base.BaseViewModel
-import com.sugarspoon.technews.data.remote.repository.NewsRepository
-import com.sugarspoon.technews.data.remote.model.Article
+import com.sugarspoon.technews.data.repository.NewsRepository
 import com.sugarspoon.technews.ui.news.routes.StateNewsRoutes
 import com.sugarspoon.technews.ui.news.states.StateNewsView
 import com.sugarspoon.technews.utils.extensions.onCollect
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class NewsViewModel (

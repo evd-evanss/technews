@@ -1,4 +1,4 @@
-package com.sugarspoon.technews.data.remote.model
+package com.sugarspoon.technews.data.model
 
 data class Source(
     val id: Any,

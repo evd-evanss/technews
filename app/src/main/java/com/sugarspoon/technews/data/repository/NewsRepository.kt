@@ -1,8 +1,8 @@
-package com.sugarspoon.technews.data.remote.repository
+package com.sugarspoon.technews.data.repository
 
 import com.sugarspoon.technews.BuildConfig
-import com.sugarspoon.technews.data.remote.model.NewsResponse
-import com.sugarspoon.technews.data.remote.datasource.NewsDataSource
+import com.sugarspoon.technews.data.model.NewsResponse
+import com.sugarspoon.technews.data.datasource.NewsDataSource
 import com.sugarspoon.technews.utils.factory.RetrofitServiceFactory
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Retrofit
