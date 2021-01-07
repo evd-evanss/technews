@@ -9,11 +9,15 @@ import com.sugarspoon.technews.R
 import com.sugarspoon.technews.data.remote.model.Article
 import kotlinx.android.synthetic.main.item_article.view.*
 
-class NewsAdapter(
-    private val articles: List<Article>
-) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     var onItemClicked: ((String) -> Unit)? = null
+
+    var articles = mutableListOf<Article>()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view = LayoutInflater.from(parent.context)
